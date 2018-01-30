@@ -29,7 +29,12 @@ app.use(session({
     secret: '8nvtCV4Krg',
     resave: false,
     store: sessionStore,
-    saveUninitialized: false
+    checkExpirationInterval: 900000,
+    expiration: 2 * 24 * 3600 * 1000,
+    saveUninitialized: false,
+    cookie : {
+        maxAge : 7 * 24 * 3600 * 1000
+    }
 }));
 
 app.use(express.static(path.join(__dirname, 'public')));
