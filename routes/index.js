@@ -67,9 +67,11 @@ router.post('/login', function(req, res, next) {
             return;
         }
         if(md5(Password) === result[0].Password) {
-
             req.session.userID = result[0].ID;
             res.status(204).send();
+        }
+        else {
+            res.status(403).send();
         }
     });
 });
