@@ -8,6 +8,9 @@ const MySQLStore = require('express-mysql-session')(session);
 
 const index = require('./routes/index');
 const users = require('./routes/users');
+const servers = require('./routes/servers');
+const channels = require('./routes/channels');
+const messages = require('./routes/messages');
 
 let options = {
     host: 'localhost',
@@ -41,6 +44,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/servers', servers);
+app.use('/channels', channels);
+app.use('/messages', messages);
 
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
